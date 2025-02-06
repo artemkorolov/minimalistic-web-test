@@ -111,19 +111,49 @@
 	<div class="section" id="contact">
 		<h2>Contact Us</h2>
 		<div class="form-container">
-			<form action="#" method="POST">
+			<form id="contact-form" action="#" method="POST" onsubmit="return validateForm(event)">
 				<input type="text" name="name" placeholder="Your name" required>
-				<input type="text" name="email" placeholder="Your email" required>
+				<input type="text" id="email" name="email" placeholder="Your email" required>
 				<textarea name="message" rows="5" placeholder="Message" required></textarea>
 				<button type="submit">Submit</button>
 			</form>
+			<!-- Place for feedback message -->
+			<div id="feedback-message" style="display:none; margin-top: 10px;"></div>
 		</div>
 	</div>
+
 
 	<!-- Footer -->
 	<footer>
 		<p>&copy; 2025 Minimalistic Web. All rights reserved.</p>
 	</footer>
+
+	<script>
+		function validateForm(event) {
+			event.preventDefault();
+
+			var email = document.getElementById("email").value;
+			var feedbackMessage = document.getElementById("feedback-message");
+
+			var incorrectEmailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+$/;
+
+			feedbackMessage.style.display = "none";
+
+			if (!incorrectEmailPattern.test(email)) {
+				feedbackMessage.style.display = "block";
+				feedbackMessage.classList.remove("success");
+				feedbackMessage.classList.add("error");
+				feedbackMessage.textContent = "Please enter a valid email address!";
+			} else {
+				feedbackMessage.style.display = "block";
+				feedbackMessage.classList.remove("error");
+				feedbackMessage.classList.add("success");
+				feedbackMessage.textContent = "Your message has been sent successfully!";
+
+				document.getElementById("contact-form").reset();
+			}
+		}
+	</script>
 
 </body>
 

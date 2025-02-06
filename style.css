@@ -151,7 +151,6 @@ footer {
 	font-size: 14px;
 }
 
-/* Smooth fadeIn animation */
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
@@ -164,7 +163,6 @@ footer {
 	}
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
 	nav a {
 		margin: 0 10px;
@@ -190,4 +188,20 @@ footer {
 	.portfolio-item {
 		width: 100%;
 	}
+}
+
+#feedback-message {
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	border-radius: 5px;
+	color: #fff;
+}
+
+#feedback-message.error {
+	background: red;
+}
+
+#feedback-message.success {
+	background: green;
 }
